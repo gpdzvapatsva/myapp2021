@@ -7,6 +7,26 @@
 <body>
 
 <h3>Employee Information</h3>
+ <h1 id="display-text">Display some Text</h1>
+<script>
+      fetch("http://127.0.0.1:5000/view", { mode: "cors" })
+        .then(function (response) {
+          console.log(response.headers.get("Content-Type"));
+          console.log(response.status);
+          console.log(response.statusText);
+          console.log(response.type);
+          console.log(response.url);
+          return response.text();
+        })
+        .then(function (text) {
+          // Function to define innerHTML for HTML table
+          alert(text);
+          document.getElementById("display-text").innerHTML = text;
+        })
+        .catch(function (error) {
+          log("Request failed", error);
+        });
+    </script>
 <table border=5>
     <thead>
         <td>ID</td>
